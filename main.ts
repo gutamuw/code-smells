@@ -5,9 +5,7 @@
   */
 
   function getLength(jumpings: number[]): number {
-  
     return jumpings.reduce((jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump);
-  
   }
   
   /*
@@ -33,22 +31,22 @@
     Det finns flera code smells att identifiera här. Vissa är lurigare än andra.
     */
   
-  class Temp {
-    constructor(public q: string, public where: Date, public v: number) {}
+  class WeatherData {
+    constructor(public city: string, public date: Date, public temperature: number) {}
   }
   
-  function averageWeeklyTemperature(heights: Temp[]) {
-    let r = 0;
+  function averageWeeklyTemperature(weatherDataArray: WeatherData[]) {
+    let totalTemperature = 0;
   
-    for (let who = 0; who < heights.length; who++) {
-      if (heights[who].q === "Stockholm") {
-        if (heights[who].where.getTime() > Date.now() - 604800000) {
-          r += heights[who].v;
+    for (let i = 0; i < weatherDataArray.length; i++) {
+      if (weatherDataArray[i].city === "Stockholm") {
+        if (weatherDataArray[i].date.getTime() > Date.now() - 604800000) {
+          totalTemperature += weatherDataArray[i].temperature;
         }
       }
     }
   
-    return r / 7;
+    return totalTemperature / 7;
   }
   
   /*
@@ -92,7 +90,7 @@
         checkbox.checked = true;
   
         container.appendChild(checkbox);
-        let listOfStudents = document.querySelector("ul#passedstudents");
+        let listOfStudents = document.cityuerySelector("ul#passedstudents");
         listOfStudents?.appendChild(container);
       } else {
         let container = document.createElement("div");
@@ -101,7 +99,7 @@
         checkbox.checked = false;
   
         container.appendChild(checkbox);
-        let listOfStudents = document.querySelector("ul#failedstudents");
+        let listOfStudents = document.cityuerySelector("ul#failedstudents");
         listOfStudents?.appendChild(container);
       }
     }
