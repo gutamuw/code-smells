@@ -84,15 +84,14 @@
       let container = document.createElement("div");
       let checkbox = document.createElement("input");
       checkbox.type = "checkbox";
-      
+      checkbox.checked = student.handedInOnTime;
+
       container.appendChild(checkbox);
 
       if (student.handedInOnTime) {
-        checkbox.checked = true;
         let listOfStudents = document.querySelector("ul#passedstudents");
         listOfStudents?.appendChild(container);
       } else {
-        checkbox.checked = false;
         let listOfStudents = document.querySelector("ul#failedstudents");
         listOfStudents?.appendChild(container);
       }
@@ -104,15 +103,10 @@
     Lorem, ipsum, dolor, sit, amet
     Exemplet under löser problemet, men inte speciellt bra. Hur kan man göra istället?
     */
-  function concatenateStrings() {
-    let result = "";
-    result += "Lorem";
-    result += "ipsum";
-    result += "dolor";
-    result += "sit";
-    result += "amet";
   
-    return result;
+  //Tog mig friheten och tänkte steget längre här...
+  function concatenateStrings(strings: string[]) {
+    return strings.join(', ');
   }
   
   /* 
