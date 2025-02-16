@@ -115,21 +115,27 @@
       fler och fler parametrar behöver läggas till? T.ex. avatar eller adress. Hitta en bättre
       lösning som är hållbar och skalar bättre. 
   */
-  function createUser(
+
+  const AGE_LIMIT = 20;
+
+  interface User {
     name: string,
     birthday: Date,
     email: string,
     password: string
-  ) {
-    // Validation
-  
+  }
+
+  function calculateAge(birthday: Date): number {
     let ageDiff = Date.now() - birthday.getTime();
     let ageDate = new Date(ageDiff);
-    let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);;
+  }
+
+  function createUser(user: User) {
+    // Validation
+    let userAge = calculateAge(user.birthday);
   
-    console.log(userAge);
-  
-    if (!(userAge < 20)) {
+    if (!(userAge < AGE_LIMIT)) {
       // Logik för att skapa en användare
     } else {
       return "Du är under 20 år";
