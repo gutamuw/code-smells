@@ -63,17 +63,15 @@
     parent: HTMLElement
   ) {
     let container = document.createElement("div");
-    let title = document.createElement("h4");
-    let pris = document.createElement("strong");
-    let imageTag = document.createElement("img");
+
+    container.innerHTML = `{
+    <h4>${name}</h4>
+    <img src="${image}" alt="${name}"></img>
+    <strong>${price}</strong>
+    <p>${description}</p>
+    <span>Antal: ${amount}</span>
+    }`
   
-    title.innerHTML = name;
-    pris.innerHTML = price.toString();
-    imageTag.src = image;
-  
-    container.appendChild(title);
-    container.appendChild(imageTag);
-    container.appendChild(pris);
     parent.appendChild(container);
   }
   
@@ -90,7 +88,7 @@
         checkbox.checked = true;
   
         container.appendChild(checkbox);
-        let listOfStudents = document.cityuerySelector("ul#passedstudents");
+        let listOfStudents = document.querySelector("ul#passedstudents");
         listOfStudents?.appendChild(container);
       } else {
         let container = document.createElement("div");
@@ -99,7 +97,7 @@
         checkbox.checked = false;
   
         container.appendChild(checkbox);
-        let listOfStudents = document.cityuerySelector("ul#failedstudents");
+        let listOfStudents = document.querySelector("ul#failedstudents");
         listOfStudents?.appendChild(container);
       }
     }
